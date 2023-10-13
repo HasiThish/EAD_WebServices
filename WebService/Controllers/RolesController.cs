@@ -12,9 +12,11 @@ namespace WebService.Controllers
 
         public RolesController(IRoleService roleService)
         {
+            // Initialize the controller with an instance of the IRoleService.
             _roleService = roleService;
         }
 
+        // Retrieve all roles.
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Role>>> GetRolesAsync()
         {
@@ -30,6 +32,7 @@ namespace WebService.Controllers
             }
         }
 
+        // Retrieve a role by its unique ID.
         [HttpGet("{id}")]
         public async Task<ActionResult<Role>> GetRoleByIdAsync(string id)
         {
@@ -49,6 +52,7 @@ namespace WebService.Controllers
             }
         }
 
+        // Create a new role.
         [HttpPost]
         public async Task<ActionResult<string>> AddRoleAsync([FromBody] Role role)
         {
@@ -64,6 +68,7 @@ namespace WebService.Controllers
             }
         }
 
+        // Update an existing role by its ID.
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateRoleAsync(string id, [FromBody] Role role)
         {
@@ -83,6 +88,7 @@ namespace WebService.Controllers
             }
         }
 
+        // Delete a role by its ID.
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteRoleAsync(string id)
         {

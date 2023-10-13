@@ -5,7 +5,6 @@ namespace WebService.Models
 {
     public class Employee
     {
-
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; } = ObjectId.GenerateNewId().ToString();
@@ -26,7 +25,7 @@ namespace WebService.Models
         public string NIC { get; set; }
 
         [BsonElement("mobile")]
-        public string[] Mobile { get; set; }
+        public string Mobile { get; set; }
 
         [BsonElement("email")]
         public string Email { get; set; }

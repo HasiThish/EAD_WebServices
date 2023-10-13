@@ -7,7 +7,7 @@ namespace WebService.Models
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; set; }
+        public string Id { get; set; } = ObjectId.GenerateNewId().ToString();
 
         [BsonElement("trainno")]
         public string TrainNumber { get; set; }
@@ -22,7 +22,7 @@ namespace WebService.Models
         public string ArrivalStation { get; set; }
 
         [BsonElement("schedule")]
-        public List<TrainSchedule> Schedule { get; set; }
+        public List<TrainSchedule> Schedule { get; set; } 
 
         [BsonElement("classes")]
         public List<string> Classes { get; set; }
@@ -33,16 +33,20 @@ namespace WebService.Models
 
     public class TrainSchedule
     {
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string Id { get; set; } = ObjectId.GenerateNewId().ToString();
+
         [BsonElement("station")]
-        public string Station { get; set; }
+        public string Station { get; set; } = string.Empty;
 
         [BsonElement("arrival")]
-        public string ArrivalTime { get; set; }
+        public string ArrivalTime { get; set; } = string.Empty;
 
         [BsonElement("departure")]
-        public string DepartureTime { get; set; }
+        public string DepartureTime { get; set; } = string.Empty;
 
         [BsonElement("stoptime")]
-        public string StopTime { get; set; }
+        public string StopTime { get; set; } = string.Empty;
     }
 }

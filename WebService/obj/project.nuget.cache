@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "VPX+ZNNvGGR6gdI8ro4wCJZZvNmqavqhz2CXcOusChGmJI4CGqCr70cZqAKchuLVRuW+h+vFG7LzjeEfcfeyUA==",
+  "dgSpecHash": "neYxg7ucCfR4qSdMyq917nz1KY+Djb3SDhrziUJEmA2dZUELRrecfhKT4qKMd4v9CFs3AAB+yZnNGfxTtMebtQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Hasini\\source\\repos\\EAD\\TicketReservationSystem\\WebService\\WebService\\WebService.csproj",
+  "projectFilePath": "C:\\Users\\Hasini\\source\\repos\\EAD\\TicketReservationSystem\\EAD_WebServices\\WebService\\WebService.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Hasini\\.nuget\\packages\\awssdk.core\\3.7.100.14\\awssdk.core.3.7.100.14.nupkg.sha512",
     "C:\\Users\\Hasini\\.nuget\\packages\\awssdk.securitytoken\\3.7.100.14\\awssdk.securitytoken.3.7.100.14.nupkg.sha512",

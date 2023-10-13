@@ -1620,11 +1620,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Hasini\\source\\repos\\EAD\\TicketReservationSystem\\WebService\\WebService\\WebService.csproj",
+      "projectUniqueName": "C:\\Users\\Hasini\\source\\repos\\EAD\\TicketReservationSystem\\EAD_WebServices\\WebService\\WebService.csproj",
       "projectName": "WebService",
-      "projectPath": "C:\\Users\\Hasini\\source\\repos\\EAD\\TicketReservationSystem\\WebService\\WebService\\WebService.csproj",
+      "projectPath": "C:\\Users\\Hasini\\source\\repos\\EAD\\TicketReservationSystem\\EAD_WebServices\\WebService\\WebService.csproj",
       "packagesPath": "C:\\Users\\Hasini\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Hasini\\source\\repos\\EAD\\TicketReservationSystem\\WebService\\WebService\\obj\\",
+      "outputPath": "C:\\Users\\Hasini\\source\\repos\\EAD\\TicketReservationSystem\\EAD_WebServices\\WebService\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

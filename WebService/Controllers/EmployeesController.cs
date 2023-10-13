@@ -17,13 +17,12 @@ namespace WebService.Controllers
         }
 
         [HttpPost("login")]
-        public IActionResult Login([FromBody] LoginModel loginModel)
+        public async Task<IActionResult> Login([FromBody] LoginModel loginModel)
         {
             // Validate user credentials against MongoDB
-            var user = _employeeService.GetUserByUsernameAsync(loginModel.Username, loginModel.Password);
-           
+            var user = await _employeeService.GetUserByUsernameAsync(loginModel.Username, loginModel.Password);
 
-            return Ok("Login successful");
+            return Ok(user);
         }
 
         [HttpPost("logout")]
@@ -72,7 +71,12 @@ namespace WebService.Controllers
             try
             {
                 var employeeId = await _employeeService.AddEmployeeAsync(employee);
-                return CreatedAtAction(nameof(GetEmployeeByIdAsync), new { id = employeeId }, employeeId);
+                if (employeeId == null)
+                {
+                    return BadRequest("Username already exists.");
+                }
+                return employeeId;
+
             }
             catch (Exception ex)
             {

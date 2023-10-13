@@ -6,7 +6,11 @@
 
         string RoleCollection { get; set; } 
 
-        string TrainCollection { get; set; } 
+        string TrainCollection { get; set; }
+
+        string TravellerCollection { get; set; }
+
+        string BookingCollection { get; set; }
 
         string ConnectionString { get; set; } 
 

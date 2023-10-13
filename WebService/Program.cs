@@ -24,6 +24,17 @@ new MongoClient(builder.Configuration.GetValue<string>("MongoDBSettings:Connecti
 builder.Services.AddScoped<ITrainService, TrainService>();
 builder.Services.AddScoped<IEmployeeService, EmployeeService>();
 builder.Services.AddScoped<IRoleService, RoleService>();
+builder.Services.AddScoped<ITravellerService, TravellerService>();
+builder.Services.AddScoped<IBookingService, BookingService>();
+
+builder.Services.AddCors(options =>
+{
+    //allow frontend url
+    options.AddPolicy("MyCorsPolicy",
+        builder => builder.WithOrigins("http://localhost:3000")
+                           .AllowAnyHeader()
+                           .AllowAnyMethod());
+});
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -38,6 +49,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors("MyCorsPolicy");
 
 app.UseHttpsRedirection();
 
