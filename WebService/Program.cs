@@ -20,6 +20,7 @@ builder.Services.AddSingleton<IMongoDBSettings>(sp =>
 builder.Services.AddSingleton<IMongoClient>(s =>
 new MongoClient(builder.Configuration.GetValue<string>("MongoDBSettings:ConnectionString")));
 
+builder.Services.AddCors();
 
 builder.Services.AddScoped<ITrainService, TrainService>();
 builder.Services.AddScoped<IEmployeeService, EmployeeService>();
@@ -27,14 +28,19 @@ builder.Services.AddScoped<IRoleService, RoleService>();
 builder.Services.AddScoped<ITravellerService, TravellerService>();
 builder.Services.AddScoped<IBookingService, BookingService>();
 
-builder.Services.AddCors(options =>
-{
-    //allow frontend url
-    options.AddPolicy("MyCorsPolicy",
-        builder => builder.WithOrigins("http://localhost:3000")
-                           .AllowAnyHeader()
-                           .AllowAnyMethod());
-});
+//builder.Services.AddCors(options =>
+//{
+//    //allow frontend url
+//    options.AddPolicy("MyCorsPolicy",
+//        builder => builder.WithOrigins("http://localhost:3000")
+//                           .AllowAnyHeader()
+//                           .AllowAnyMethod());
+
+//    options.AddPolicy("MyCorsPolicy2",
+//        builder => builder.WithOrigins("http://localhost:")
+//                           .AllowAnyHeader()
+//                           .AllowAnyMethod());
+//});
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -50,7 +56,16 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseCors("MyCorsPolicy");
+//app.UseCors("MyCorsPolicy");
+
+//app.UseCors("MyCorsPolicy2");
+
+app.UseCors(builder =>
+{
+    builder.AllowAnyOrigin()    // Allow requests from any origin
+           .AllowAnyMethod()    // Allow any HTTP method (GET, POST, PUT, DELETE, etc.)
+           .AllowAnyHeader();    // Allow any header
+});
 
 app.UseHttpsRedirection();
 

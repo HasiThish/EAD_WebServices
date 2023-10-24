@@ -1,9 +1,10 @@
 ﻿using MongoDB.Driver;
+using System.Text.RegularExpressions;
 using WebService.Models;
 
 namespace WebService.Services
 {
-    public class BookingService:IBookingService
+    public class BookingService : IBookingService
     {
         private readonly IMongoCollection<Booking> _bookingCollection;
         private readonly IMongoCollection<Train> _trainCollection;
@@ -109,6 +110,28 @@ namespace WebService.Services
             return trainBookingDetails;
         }
 
+        public int GetLatestBookingNumberFromDatabase()
+        {
+            var filter = Builders<Booking>.Filter.Empty;
+            var sort = Builders<Booking>.Sort.Descending(b => b.BookingId);
+
+            var latestBooking = _bookingCollection.Find(filter)
+                .Sort(sort)
+                .Limit(1)
+                .FirstOrDefault();
+
+            if (latestBooking != null)
+            {
+                // Extract the numeric part of the bookingId and increment it
+                if (int.TryParse(Regex.Match(latestBooking.BookingId, @"\d+").Value, out int latestNumber))
+                {
+                    return latestNumber;
+                }
+            }
+
+            // If no previous bookings found, start with 1
+            return 1;
+        }
 
     }
 }

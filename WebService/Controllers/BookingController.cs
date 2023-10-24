@@ -39,6 +39,7 @@ namespace WebService.Controllers
         [HttpPost]
         public async Task<ActionResult<string>> CreateBooking([FromBody] Booking booking)
         {
+            booking.BookingId = Booking.GenerateBookingId(_bookingService);
             var bookingId = await _bookingService.CreateBookingAsync(booking);
             return bookingId;
         }

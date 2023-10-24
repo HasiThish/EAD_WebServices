@@ -13,6 +13,7 @@ namespace WebService.Services
         Task<bool> AddTrainScheduleAsync(string id, TrainSchedule schedule);
         Task<bool> UpdateTrainScheduleAsync(string trainId, string scheduleId, TrainSchedule updatedSchedule);
         Task<bool> DeleteTrainScheduleAsync(string trainId, string scheduleId);
+        Task<List<Train>> GetTrainsByStationsAsync(string startStation, string endStation);
     }
 
 }

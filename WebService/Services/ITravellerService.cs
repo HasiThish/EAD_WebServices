@@ -9,5 +9,6 @@ namespace WebService.Services
         Task<string> CreateTravelerAsync(Traveller traveler);
         Task<bool> UpdateTravelerAsync(string id, Traveller updatedTraveler);
         Task<bool> DeleteTravelerAsync(string id);
+        Task<Traveller> GetUserByUsernameAsync(string username, string password);
     }
 }

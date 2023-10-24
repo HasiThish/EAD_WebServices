@@ -6,6 +6,10 @@
     "iisExpress": {
       "applicationUrl": "http://localhost:63491",
       "sslPort": 44344
+    },
+    "iis": {
+      "applicationUrl": "http://localhost/TRMSTest",
+      "sslPort": 0
     }
   },
   "profiles": {
@@ -23,6 +27,14 @@
       "commandName": "IISExpress",
       "launchBrowser": true,
       "launchUrl": "swagger",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    "Local IIS": {
+      "commandName": "IIS",
+      "launchBrowser": true,
+      "launchUrl": "http://localhost/TRMSTest",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

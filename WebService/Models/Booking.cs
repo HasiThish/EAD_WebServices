@@ -1,5 +1,8 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Bson;
+using MongoDB.Driver;
+using System.Text.RegularExpressions;
+using WebService.Services;
 
 namespace WebService.Models
 {
@@ -23,6 +26,17 @@ namespace WebService.Models
 
         [BsonElement("date")]
         public DateTime Date { get; set; }
+
+
+        public static string GenerateBookingId(IBookingService bookingService)
+        {
+            int latestNumber = bookingService.GetLatestBookingNumberFromDatabase();
+            string newBookingId = "OTB" + (latestNumber + 1).ToString("D4");
+            return newBookingId;
+        }
+
     }
+
+
 
 }

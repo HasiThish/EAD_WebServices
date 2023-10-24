@@ -49,5 +49,21 @@ namespace WebService.Services
             var deleteResult = await _travelerCollection.DeleteOneAsync(traveler => traveler.Id == id);
             return deleteResult.DeletedCount > 0; // Return true if a document was deleted.
         }
+
+        // Authenticate a user by their username and password.
+        public async Task<Traveller> GetUserByUsernameAsync(string username, string password)
+        {
+            try
+            {
+                // Find and return the user with the given username and password.
+                var user = await _travelerCollection.Find(traveller => traveller.Username == username && traveller.Password == password).FirstOrDefaultAsync();
+                return user;
+            }
+            catch (Exception ex)
+            {
+                // Handle exceptions (e.g., MongoDB connection error, etc.) by rethrowing the exception.
+                throw ex;
+            }
+        }
     }
 }

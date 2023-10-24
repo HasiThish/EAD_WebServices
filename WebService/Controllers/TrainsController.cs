@@ -155,5 +155,20 @@ namespace WebService.Controllers
             }
             return NotFound(); // Handle errors as needed.
         }
+
+        [HttpPost("searchedtrains")]
+        public async Task<ActionResult<List<Train>>> GetTrainsBetweenStationsAsync([FromBody] StationsRequest request)
+        {
+            var filteredTrains = await _trainService.GetTrainsByStationsAsync(request.StartStation, request.EndStation);
+
+            if (filteredTrains == null)
+            {
+                return NotFound("No trains found for the given stations.");
+            }
+            else
+            {
+                return filteredTrains;
+            }
+        }
     }
 }

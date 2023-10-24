@@ -10,5 +10,6 @@ namespace WebService.Services
         Task<bool> UpdateBookingAsync(string id, Booking updatedBooking);
         Task<bool> DeleteBookingAsync(string id);
         Task<TrainBookingDetails> GetTrainBookingDetailsByTravelerNICAsync(string travelerNIC);
+        int GetLatestBookingNumberFromDatabase();
     }
 }

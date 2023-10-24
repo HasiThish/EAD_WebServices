@@ -17,6 +17,21 @@ namespace WebService.Controllers
             _travelerService = travelerService;
         }
 
+        [HttpPost("login")]
+        public async Task<IActionResult> Login([FromBody] LoginModel loginModel)
+        {
+            // Validate user credentials against MongoDB
+            var user = await _travelerService.GetUserByUsernameAsync(loginModel.Username, loginModel.Password);
+
+            return Ok(user);
+        }
+
+        [HttpPost("logout")]
+        public IActionResult Logout()
+        {
+            return Ok("Logout successful");
+        }
+
         // Retrieve all travelers.
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Traveller>>> GetAllTravelers()

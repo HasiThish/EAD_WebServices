@@ -106,5 +106,16 @@ namespace WebService.Services
             var updateResult = await _trainCollection.UpdateOneAsync(filter, update);
             return updateResult.ModifiedCount > 0;
         }
+
+        public async Task<List<Train>> GetTrainsByStationsAsync(string startStation, string endStation)
+        {
+            var filter = Builders<Train>.Filter.ElemMatch(
+                t => t.Schedule,
+                s => s.Station == startStation) & Builders<Train>.Filter.ElemMatch(
+                t => t.Schedule,
+                s => s.Station == endStation);
+
+            return await _trainCollection.Find(filter).ToListAsync();
+        }
     }
 }
